@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:math_expressions/math_expressions.dart';
+import 'service.dart';
 
 void main() {
   runApp(MyApp());
@@ -137,20 +137,9 @@ class _CalculatorState extends State<Calculator> {
         style: TextStyle(fontSize: 24.0),
       ),
       style: ElevatedButton.styleFrom(
-        primary: color ?? Colors.blue,
+        backgroundColor: color ?? Colors.blue,
         padding: EdgeInsets.all(20.0),
       ),
     );
-  }
-
-  double eval(String expression) {
-    try {
-      Parser p = Parser();
-      Expression exp = p.parse(expression);
-      ContextModel cm = ContextModel();
-      return exp.evaluate(EvaluationType.REAL, cm);
-    } catch (e) {
-      return double.nan;
-    }
   }
 }
