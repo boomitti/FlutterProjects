@@ -13,7 +13,31 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
       ),
-      home: Calculator(),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Calculator(),
+                ),
+              );
+            },
+            child: Text(
+              "Calculator",
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -56,9 +80,6 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter Web Calculator'),
-      ),
       body: Column(
         children: [
           Expanded(
@@ -74,6 +95,9 @@ class _CalculatorState extends State<Calculator> {
               ),
             ),
           ),
+          SizedBox(
+            height: 50.0,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -82,6 +106,9 @@ class _CalculatorState extends State<Calculator> {
               _buildButton('9'),
               _buildButton('/'),
             ],
+          ),
+          SizedBox(
+            height: 50.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -92,6 +119,9 @@ class _CalculatorState extends State<Calculator> {
               _buildButton('*'),
             ],
           ),
+          SizedBox(
+            height: 50.0,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -101,6 +131,9 @@ class _CalculatorState extends State<Calculator> {
               _buildButton('-'),
             ],
           ),
+          SizedBox(
+            height: 50.0,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -109,6 +142,9 @@ class _CalculatorState extends State<Calculator> {
               _buildButton('='),
               _buildButton('+'),
             ],
+          ),
+          SizedBox(
+            height: 50.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -134,7 +170,7 @@ class _CalculatorState extends State<Calculator> {
       },
       child: Text(
         text,
-        style: TextStyle(fontSize: 24.0),
+        style: TextStyle(fontSize: 24.0, color: Colors.white),
       ),
       style: ElevatedButton.styleFrom(
         backgroundColor: color ?? Colors.blue,
