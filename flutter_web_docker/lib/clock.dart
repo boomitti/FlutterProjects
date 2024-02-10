@@ -13,7 +13,7 @@ class _DigitalClockState extends State<DigitalClock> {
   void initState() {
     super.initState();
     // Update the time every second
-    Timer.periodic(Duration(seconds: 1), _updateTime);
+    Timer.periodic(Duration(milliseconds: 1), _updateTime);
   }
 
   void _updateTime(Timer timer) {
@@ -21,7 +21,7 @@ class _DigitalClockState extends State<DigitalClock> {
       // Get the current time
       DateTime now = DateTime.now();
       // Format the time as HH:mm:ss
-      _currentTime = "${now.hour}:${_twoDigits(now.minute)}:${_twoDigits(now.second)}";
+      _currentTime = "${now.hour}:${_twoDigits(now.minute)}:${_twoDigits(now.second)}:${_twoDigits(now.millisecond)}";
     });
   }
 
